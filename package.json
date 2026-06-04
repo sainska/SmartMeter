@@ -1,0 +1,18 @@
+{
+  "name": "smartmeter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "INSY492: Automating Consumer Electric Power Consumption — Next.js + Express + Supabase",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "build": "npm run build --prefix frontend",
+    "install:all": "npm install --prefix frontend && npm install --prefix backend",
+    "db:push": "node scripts/run-schema.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "pg": "^8.13.3"
+  }
+}

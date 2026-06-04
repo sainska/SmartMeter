@@ -1,0 +1,198 @@
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, #1a4d3e 0%, #0d1f1a 45%, #060e0c 100%);
+}
+
+.grid {
+  position: absolute;
+  inset: -50%;
+  background-image:
+    linear-gradient(rgba(72, 187, 140, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(72, 187, 140, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  transform: perspective(500px) rotateX(58deg) translateY(-12%);
+  animation: gridDrift 24s linear infinite;
+}
+
+@keyframes gridDrift {
+  0% { transform: perspective(500px) rotateX(58deg) translateY(-12%) translateX(0); }
+  100% { transform: perspective(500px) rotateX(58deg) translateY(-12%) translateX(48px); }
+}
+
+.glow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 420px;
+  height: 420px;
+  margin-left: -210px;
+  background: radial-gradient(circle, rgba(56, 189, 140, 0.25) 0%, transparent 70%);
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+.ring {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin-left: -100px;
+  opacity: 0.35;
+}
+
+.ringInner {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(72, 187, 140, 0.4);
+  border-radius: 50%;
+  animation: ringSpin 12s linear infinite;
+}
+
+.ringTick,
+.ringTick2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 90px;
+  margin: -45px 0 0 -1px;
+  background: linear-gradient(to top, transparent, rgba(72, 187, 140, 0.8));
+  transform-origin: center bottom;
+}
+
+.ringTick {
+  animation: ringSpin 12s linear infinite;
+}
+
+.ringTick2 {
+  transform: rotate(120deg);
+  animation: ringSpin 12s linear infinite;
+}
+
+@keyframes ringSpin {
+  to { transform: rotate(360deg); }
+}
+
+.ringCenter {
+  position: absolute;
+  inset: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(6, 14, 12, 0.6);
+  border: 1px solid rgba(72, 187, 140, 0.3);
+  border-radius: 50%;
+}
+
+.reading {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #7dffc8;
+  letter-spacing: 0.02em;
+}
+
+.unit {
+  font-size: 0.65rem;
+  color: rgba(125, 255, 200, 0.6);
+  text-transform: uppercase;
+}
+
+.waves {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  align-items: flex-end;
+  height: 60px;
+  opacity: 0.4;
+}
+
+.waves span {
+  display: block;
+  width: 8px;
+  background: linear-gradient(to top, #1b5e4b, #48bb8c);
+  border-radius: 4px 4px 0 0;
+  animation: waveBar 1.2s ease-in-out infinite;
+}
+
+.waves span:nth-child(1) { height: 20px; animation-delay: 0s; }
+.waves span:nth-child(2) { height: 40px; animation-delay: 0.15s; }
+.waves span:nth-child(3) { height: 28px; animation-delay: 0.3s; }
+
+@keyframes waveBar {
+  0%, 100% { transform: scaleY(0.6); opacity: 0.5; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+
+.streams {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.stream {
+  position: absolute;
+  left: calc(10% + var(--i) * 11%);
+  top: -20%;
+  width: 1px;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent, rgba(72, 187, 140, 0.6), transparent);
+  animation: streamFall calc(3s + var(--i) * 0.4s) linear infinite;
+  animation-delay: calc(var(--i) * -0.5s);
+}
+
+@keyframes streamFall {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(250vh); opacity: 0; }
+}
+
+.nodes {
+  position: absolute;
+  inset: 0;
+}
+
+.node {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #48bb8c;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #48bb8c;
+  left: calc(8% + (var(--i) * 7.5%));
+  top: calc(15% + (var(--i) * 6%));
+  animation: nodePulse calc(2s + var(--i) * 0.2s) ease-in-out infinite;
+}
+
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(72, 187, 140, 0.5), transparent);
+  animation: scan 6s linear infinite;
+  opacity: 0.4;
+}
+
+@keyframes scan {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
