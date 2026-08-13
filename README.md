@@ -1,8 +1,5 @@
 # Automating Consumer Electric Power Consumption
-
-**INSY492 Senior Project** · University of Eastern Africa, Baraton  
-Department of Information Systems and Computing
-
+ 
 A full-stack web system that **automates consumer electric power consumption** reading and reporting: live meter data, transparent usage and billing for consumers, and role-based tools for utility staff (admin, billing, technician, manager). Wireless transmission (GSM / LoRa / MQTT) is **simulated in software** via transmission logs for the academic prototype.
 
 ---
